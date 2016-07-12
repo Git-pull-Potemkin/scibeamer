@@ -1,0 +1,218 @@
+%% Beamer document class
+\documentclass[11pt]{beamer}
+% Available font size options: 
+% 8pt, 9pt, 10pt, 11pt (default), 12pt, 14pt, 17pt, 20pt
+
+% Make printable version
+%\usepackage{beamerarticle}
+
+%% Language, fonts and encoding
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage[light,math]{iwona} % Math font w/o serifs
+\usepackage[final]{microtype}
+\usepackage{lmodern}
+
+%% Links, colors, citations
+%\usepackage{showkeys} % Show labels in pdf
+
+%% Graphics
+%\graphicspath{{./\jobname-graphics/}}
+%\usepackage{subfig}
+\usepackage[scriptsize]{caption} % Caption text style
+
+%% Drawing
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,3d,calc,decorations.pathmorphing}
+
+%\usepackage{movie15}
+\usepackage{multimedia}
+
+%% Layout
+%\usepackage{multicols} % n columns with \begin{multicols}{<n>} ... \end{multicols}
+%\setlength{\columnsep}{5pc}
+
+%% Beamer-specific layout and style
+%\usepackage{beamerthemesplit} %Activate for custom appearance
+%\usetheme{Berkeley}
+%\usetheme{CambridgeUS}
+\usetheme{Singapore}
+\usecolortheme{seagull} % Gray color theme
+%\usecolortheme{beetle} % Complete Color Theme
+%%\usecolortheme{orchid} % Inner color theme
+%%\usecolortheme{whale}  % Outer Color Theme
+\xdefinecolor{AUblue}{rgb}{0.0,0.3,0.5}
+%\setbeamercolor{sidebar}{bg=AUblue}
+\setbeamercolor{frametitle}{fg=AUblue}
+%\setbeamercolor{logo}{bg=AUblue!80!black}
+%\setbeamercolor{normal text}{bg=white!20}
+\setbeamercolor{section in toc}{fg=AUblue}
+\setbeamercolor{title}{fg=red!50!black}
+
+%\usefonttheme{serif} % Serif fonts
+
+%% Mathematics, scientific and chemical notation
+\usepackage{amssymb,amsmath,amsfonts}
+%\usepackage{mathtools}
+%\usepackage{booktabs} % \toprule, \midrule and \bottomrule in tabular
+\usepackage[detect-all]{siunitx}
+%\usepackage[version=3]{mhchem} % chemical notation
+
+%% Code typesetting
+\usepackage{listings}
+
+% Do not show horizontal line above footnotes
+\renewcommand\footnoterule{}
+
+
+%% Citation commands
+
+% \fcite{arg1}{arg2}
+% Add a citation as a small footnote in the current slide. `arg1` will be 
+% stylized as regular text, followed by `arg2` in emphasized style.
+% Example: \fcite{Author year}{Journal}
+\newcommand{\fcite}[2]{\let\thefootnote\relax\footnotetext{\footnotesize{#1 \emph{#2}}}}
+
+
+%% Frame templates
+
+% \titleframe{arg1}
+% Add a plain frame with large centered text.
+% Example: \titleframe{Conclusions}
+\newcommand{\titleframe}[1]{\begin{frame}\begin{center}\huge{#1}\end{center}\end{frame}}
+
+% \plainimageframe{arg1}{arg2}
+% Add a plain frame with a single full-frame image `arg1`, scaled relative to 
+% frame width multiplied by `arg2`.
+% Example: \plainimageframe{image.png}{1.0}
+\newcommand{\plainimageframe}[2]{\begin{frame}\begin{center}\centering\includegraphics[width=#2\textwidth]{#1}\end{center}\end{frame}}
+
+% \plainimageframeheight{arg1}{arg2}
+% Add a plain frame with a single full-frame image `arg1`, scaled relative to 
+% frame height multiplied by `arg2`.
+% Example: \plainimageframeheight{image.png}{1.0}
+\newcommand{\plainimageframeheight}[2]{\begin{frame}\begin{center}\centering\includegraphics[height=#2\textheight]{#1}\end{center}\end{frame}}
+
+% \imageframe{arg1}{arg2}{arg3}
+% Add a frame with title `arg1`, containing a single full-frame image `arg2`, 
+% scaled relative to frame width multiplied by `arg3`.
+% Example: \imageframe{An example frame}{image.png}{1.0}
+\newcommand{\imageframe}[3]{\begin{frame}{#1}\begin{center}\centering\includegraphics[width=#3\textwidth]{#2}\end{center}\end{frame}}
+
+% \plainimageframeheight{arg1}{arg2}{arg3}
+% Add a frame with title `arg1`, containing a single full-frame image `arg2`, 
+% scaled relative to frame height multiplied by `arg3`.
+% Example: \plainimageframeheight{An example frame}{image.png}{1.0}
+\newcommand{\imageframeheight}[3]{\begin{frame}{#1}\begin{center}\centering\includegraphics[height=#3\textheight]{#2}\end{center}\end{frame}}
+
+% \plainimageframe{arg1}{arg2}
+% Add a frame with title `arg1`, containing a single full-frame image `arg2` 
+% that is not scaled relative to the frame size.
+% Example: \plainimageframe{An example frame}{image.png}
+\newcommand{\imageframenoscale}[2]{\begin{frame}{#1}\begin{center}\centering\includegraphics{#2}\end{center}\end{frame}}
+
+% \imageframecite{arg1}{arg2}{arg3}{arg4}{arg5}
+% Add a frame with title `arg1`, containing a single image `arg2`, scaled 
+% relative to frame height multiplied by `arg3`, including a citation to 
+% publication authored by `arg4`, published in `arg5`.
+% Example: \imageframecite{An example title}{image.pdf}{1.0}{Author year}{Journal}
+\newcommand{\imageframecite}[5]{\begin{frame}{#1}\begin{center}\centering\includegraphics[width=#3\textwidth]{#2}\end{center}\fcite{#4}{#5}\end{frame}}
+
+
+%%%% AUTHOR, TITLE, AFFILIATION
+\title{\texttt{scibeamer}\\ a template for scientific presentations}
+\author[A. Damsgaard]{Anders Damsgaard}
+\institute[SIO]{Scripps Institution of Oceanography\\[2mm]
+{\small \url{adamsgaard@ucsd.edu}}}
+\date{\small Unmodified template, 2016-07-12}
+%\logo{\includegraphics[width=30px]{logo1.pdf}}
+%\logo{\includegraphics[width=30px]{logo2.pdf}}
+ 
+\begin{document}
+
+\begin{frame}[fragile]
+  \begin{centering}
+    \framesubtitle{Scripps Institution of Oceanography, UCSD}
+    \titlepage{}
+  \end{centering}
+\end{frame}
+
+% Optional slide with table of contents
+%\begin{frame}[fragile]
+    %\tableofcontents
+%\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Usage}
+
+    \texttt{scibeamer} is a flexible template containing functions for quickly 
+    creating high-quality scientific presentations using \emph{beamer}.
+
+    \vspace{1em}
+
+    The functions in the \texttt{scibeamer} template are useful for including 
+    images scaled to frame size with optional references to image source 
+    publications.
+
+\end{frame}
+
+\begin{frame}{Building presentations}
+
+    Add images to the folder containing \texttt{scibeamer.tex} and change the 
+    \texttt{scibeamer.tex} to include the desired content, using the provided 
+    functions or standard \emph{beamer} commands.
+
+    \vspace{1em}
+
+    The included \texttt{Makefile} allows quick output PDF generation by typing 
+    \texttt{make} from the command line.
+
+\end{frame}
+
+
+\section{Examples}
+
+\titleframe{Examples}
+
+\plainimageframe{graphics/fig1.pdf}{1.0}
+
+\plainimageframeheight{graphics/fig1.pdf}{0.5}
+
+\imageframe{An example image frame using \texttt{\\imageframe}}
+{graphics/fig1.pdf}{0.5}
+
+\imageframenoscale{An example unscaled image frame using \texttt{\\imageframenoscale}}
+{graphics/fig1.pdf}
+
+\imageframecite{An example image frame using \texttt{\\imageframecite}}
+{graphics/fig1.pdf}{0.8}%
+{Damsgaard et al. 2013}{J. Geophys. Res.-Earth}
+
+
+\section{Conclusions}
+\begin{frame}{Conclusions}
+    \begin{itemize}
+
+        \item \texttt{scibeamer} adds to \emph{beamer} functionality by 
+            providing functions for quickly creating image-based slides.\\[3mm]
+
+        \item Output files can be built as \texttt{pdf} (default), \texttt{dvi}, 
+            or \texttt{eps} using the provided \texttt{Makefile}.\\[3mm]
+
+        \item \texttt{scibeamer} is available at 
+            \url{https://github.com/anders-dc/scibeamer}.
+
+    \end{itemize}
+\end{frame}
+
+
+%%%% APPENDIX
+%\titleframe{Appendix}
+
+%\begin{frame}
+%    Optionally include appendix content here.
+%\end{frame}
+
+\end{document}
