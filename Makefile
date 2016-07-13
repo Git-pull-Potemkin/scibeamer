@@ -1,4 +1,4 @@
-NAME=scibeamer
+NAME=template
 
 default: pdf
 all: dvi eps pdf
@@ -12,9 +12,6 @@ view: view-pdf
 
 edit: $(NAME).tex Makefile
 	$(EDITOR) $^
-
-upload: $(NAME).pdf
-	scp $< adc@fh.cs.au.dk:~/public_html_cs/
 
 $(NAME).eps: $(NAME).dvi
 	dvips -o $@ $<

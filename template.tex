@@ -20,7 +20,6 @@
 %% Graphics
 %\graphicspath{{./\jobname-graphics/}}
 %\usepackage{subfig}
-\usepackage[scriptsize]{caption} % Caption text style
 
 %% Drawing
 \usepackage{tikz}
@@ -62,63 +61,7 @@
 %% Code typesetting
 \usepackage{listings}
 
-% Do not show horizontal line above footnotes
-\renewcommand\footnoterule{}
-
-
-%% Citation commands
-
-% \fcite{arg1}{arg2}
-% Add a citation as a small footnote in the current slide. `arg1` will be 
-% stylized as regular text, followed by `arg2` in emphasized style.
-% Example: \fcite{Author year}{Journal}
-\newcommand{\fcite}[2]{\let\thefootnote\relax\footnotetext{\footnotesize{#1 \emph{#2}}}}
-
-
-%% Frame templates
-
-% \titleframe{arg1}
-% Add a plain frame with large centered text.
-% Example: \titleframe{Conclusions}
-\newcommand{\titleframe}[1]{\begin{frame}\begin{center}\huge{#1}\end{center}\end{frame}}
-
-% \plainimageframe{arg1}{arg2}
-% Add a plain frame with a single full-frame image `arg1`, scaled relative to 
-% frame width multiplied by `arg2`.
-% Example: \plainimageframe{image.png}{1.0}
-\newcommand{\plainimageframe}[2]{\begin{frame}\begin{center}\centering\includegraphics[width=#2\textwidth]{#1}\end{center}\end{frame}}
-
-% \plainimageframeheight{arg1}{arg2}
-% Add a plain frame with a single full-frame image `arg1`, scaled relative to 
-% frame height multiplied by `arg2`.
-% Example: \plainimageframeheight{image.png}{1.0}
-\newcommand{\plainimageframeheight}[2]{\begin{frame}\begin{center}\centering\includegraphics[height=#2\textheight]{#1}\end{center}\end{frame}}
-
-% \imageframe{arg1}{arg2}{arg3}
-% Add a frame with title `arg1`, containing a single full-frame image `arg2`, 
-% scaled relative to frame width multiplied by `arg3`.
-% Example: \imageframe{An example frame}{image.png}{1.0}
-\newcommand{\imageframe}[3]{\begin{frame}{#1}\begin{center}\centering\includegraphics[width=#3\textwidth]{#2}\end{center}\end{frame}}
-
-% \plainimageframeheight{arg1}{arg2}{arg3}
-% Add a frame with title `arg1`, containing a single full-frame image `arg2`, 
-% scaled relative to frame height multiplied by `arg3`.
-% Example: \plainimageframeheight{An example frame}{image.png}{1.0}
-\newcommand{\imageframeheight}[3]{\begin{frame}{#1}\begin{center}\centering\includegraphics[height=#3\textheight]{#2}\end{center}\end{frame}}
-
-% \plainimageframe{arg1}{arg2}
-% Add a frame with title `arg1`, containing a single full-frame image `arg2` 
-% that is not scaled relative to the frame size.
-% Example: \plainimageframe{An example frame}{image.png}
-\newcommand{\imageframenoscale}[2]{\begin{frame}{#1}\begin{center}\centering\includegraphics{#2}\end{center}\end{frame}}
-
-% \imageframecite{arg1}{arg2}{arg3}{arg4}{arg5}
-% Add a frame with title `arg1`, containing a single image `arg2`, scaled 
-% relative to frame height multiplied by `arg3`, including a citation to 
-% publication authored by `arg4`, published in `arg5`.
-% Example: \imageframecite{An example title}{image.pdf}{1.0}{Author year}{Journal}
-\newcommand{\imageframecite}[5]{\begin{frame}{#1}\begin{center}\centering\includegraphics[width=#3\textwidth]{#2}\end{center}\fcite{#4}{#5}\end{frame}}
-
+\usepackage{scibeamer}
 
 %%%% AUTHOR, TITLE, AFFILIATION
 \title{\texttt{scibeamer}\\ a template for scientific presentations}
